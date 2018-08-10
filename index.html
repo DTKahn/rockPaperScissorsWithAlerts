@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Rock Paper Scissors</title>
+</head>
+<body>
+    <h1>Rock Paper Scissors</h1>
+    <p>Reload the page to play again.</p>
+    <script>
+        let gameCount = 0;
+        let userScore = 0;
+        let compScore = 0;
+        let numberOfGames = Number(prompt("How many rounds would you like to play? (enter a number)"));
+        while(isNaN(numberOfGames)) {
+            numberOfGames = Number(prompt(`Please enter an integer. How many rounds would you like to play? (3, not "three"`));
+        }
+
+        while (gameCount < numberOfGames) {
+            gameCount++
+            console.log(`Round ${gameCount} of ${numberOfGames}!`);
+            alert(`Round ${gameCount} of ${numberOfGames}!`);
+            let winner;
+
+            const compChoice = Math.floor(Math.random() * 3) + 1;
+            let compThrows;
+
+            if (compChoice === 1) {
+                compThrows = "rock";
+            }
+            else if (compChoice === 2) {
+                compThrows = "paper";
+            }
+            else {
+                compThrows = "scissors";
+            }
+
+            // console.log(compChoice);
+
+            let userThrows = prompt("rock, paper, or scissors?").toLowerCase();
+            // console.log(`User throw outside while loop ${userThrows}`);
+            
+
+            while(userThrows !== "rock" && userThrows !== "paper" && userThrows !== "scissors") {
+                // console.log(`in while look before prompt ${userThrows}`);
+                userThrows = prompt("Please enter rock, paper, or scissors.").toLowerCase();
+            }
+
+            // console.log(`User throw outside while loop 2 ${userThrows}`);
+
+            console.log(`User throws: ${userThrows}`);
+            console.log(`Computer throws: ${compThrows}`);
+
+            if (userThrows === compThrows) {
+                console.log('Tie game!');
+                alert(`
+                Your throw: ${userThrows}
+                Computer's throw: ${compThrows}
+                
+                It's a Tie!
+                `);
+            }
+            else if (compThrows === "rock") {
+                if (userThrows === "scissors") {
+                    console.log('Computer wins!');
+                    alert(`
+                    Your throw: ${userThrows}
+                    Computer's throw: ${compThrows}
+                    
+                    Computer wins!
+                    `);
+                    winner = "comp";
+                }
+                else {
+                    console.log('User wins!');
+                    alert(`
+                    Your throw: ${userThrows}
+                    Computer's throw: ${compThrows}
+                    
+                    You win!
+                    `);
+                    winner = "user";
+                }
+            }
+            else if (compThrows === "paper") {
+                if (userThrows === "rock") {
+                    console.log('Computer wins!');
+                    alert(`
+                    Your throw: ${userThrows}
+                    Computer's throw: ${compThrows}
+                    
+                    Computer wins!
+                    `);
+                    winner = "comp";
+                }
+                else {
+                    console.log('User wins!');
+                    alert(`
+                    Your throw: ${userThrows}
+                    Computer's throw: ${compThrows}
+                    
+                    You win!
+                    `);
+                    winner = "user";
+                }
+            }
+            else {
+                if (userThrows === "paper") {
+                    console.log('Computer wins!');
+                    alert(`
+                    Your throw: ${userThrows}
+                    Computer's throw: ${compThrows}
+                    
+                    Computer wins!
+                    `);
+                    winner = "comp";
+                }
+                else {
+                    console.log('User wins!');
+                    alert(`
+                    Your throw: ${userThrows}
+                    Computer's throw: ${compThrows}
+                    
+                    You win!
+                    `);
+                    winner = "user";
+                }
+            }
+
+            if (winner === "comp") {
+                compScore++;
+            } 
+            else if (winner === "user") {
+                userScore++
+            }
+
+            console.log(`Score: Computer: ${compScore}, User: ${userScore}`);
+            alert(`
+            Scores: 
+            Computer: ${compScore}
+            You: ${userScore}
+            `);
+            console.log('');   
+        }
+
+        if(compScore === userScore) {
+            console.log(`Tie game with a final score of Computer: ${compScore}, User: ${userScore}`);
+            alert(`Tie game with a final score of ${compScore} all.`);
+        } 
+        else if (compScore > userScore) {
+            console.log(`The computer beat you with a final score of Computer: ${compScore}, User: ${userScore}`);
+            alert(`The computer beat you with a final score of ${compScore} to ${userScore}.`);
+        } else {
+            console.log(`You beat the computer with a final score of Computer: ${compScore}, User: ${userScore}`);
+            alert(`You beat the computer with a final score of ${compScore} to ${userScore}.`);
+        }
+        // GAME 2 END
+
+    </script>
+</body>
+</html>
